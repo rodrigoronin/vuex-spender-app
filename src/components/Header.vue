@@ -12,8 +12,9 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  background: #fff;
-  padding: 0.7em;
+  background: $pure-white;
+  padding: 0.8em;
+  font-size: 24px;
   margin-bottom: 25px;
 }
 </style>
