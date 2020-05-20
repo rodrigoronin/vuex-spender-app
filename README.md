@@ -1,29 +1,17 @@
-# vuex-shopping-cart
+# Vuex Spender App
 
-## Project setup
+This is a Vuex app made as a challenge based on [Neal Agarwal](https://twitter.com/nealagarwal) [project](https://neal.fun/spend/).
+Have fun and spend Mr. Stark's money =)
 
-```
-yarn install
-```
+## Available Scripts
 
-### Compiles and hot-reloads for development
+In the project directory, you can run:
 
-```
-yarn serve
-```
+### `yarn serve`
 
-### Compiles and minifies for production
+Runs the app in the development mode.<br />
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
-```
-yarn build
-```
+### `yarn run build`
 
-### Lints and fixes files
-
-```
-yarn lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Builds the app for production to the `dist` folder.<br />
