@@ -18,32 +18,29 @@ const state = {
     { Name: "Diamond Ring", Cost: 10000 },
     { Name: "Rolex", Cost: 15000 },
     { Name: "Speed boat", Cost: 30000 },
-    { Name: "Food Truck", Cost: 50000 },
+    { Name: "Ford Flathead", Cost: 40000 },
     { Name: "Tesla", Cost: 70000 },
     { Name: "Monster Truck", Cost: 150000 },
     { Name: "Helicopter", Cost: 175000 },
     { Name: "Ferrari", Cost: 200000 },
-    { Name: "Lamborghini", Cost: 200000 },
-    { Name: "Firetruck", Cost: 200000 },
     { Name: "Townhouse", Cost: 200000 },
-    { Name: "Bar", Cost: 300000 },
-    { Name: "Pizza Shop", Cost: 500000 },
-    { Name: "Bar of Gold", Cost: 500000 },
+    { Name: "Rolls Royce Phantom", Cost: 388000 },
+    { Name: "Vibranium 50g", Cost: 500000 },
     { Name: "Superbowl Ad", Cost: 5000000 },
     { Name: "Beach House", Cost: 5000000 },
     { Name: "Yacht", Cost: 10000000 },
     { Name: "F16", Cost: 15000000 },
     { Name: "Skyscraper", Cost: 50000000 },
     { Name: "Mansion", Cost: 50000000 },
-    { Name: "Rocket", Cost: 60000000 },
+    { Name: "Cpt America Shield", Cost: 54000000 },
     { Name: "Passenger Jet", Cost: 150000000 },
     { Name: "Mona Lisa", Cost: 780000000, Limit: 1 },
     { Name: "Cruise Ship", Cost: 1200000000 },
     { Name: "NBA Team", Cost: 1300000000, Limit: 30 },
     { Name: "MLB Team", Cost: 1500000000, Limit: 30 },
-    { Name: "NFL Team", Cost: 2300000000, Limit: 32 },
   ],
   money: 12800000000,
+  cartItems: [],
 };
 
 const getters = {
@@ -51,13 +48,16 @@ const getters = {
   getMoney: (state) => state.money,
   getParsedMoney: (state) =>
     state.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+
+  getCartItems: (state) => state.cartItems,
 };
 
 const actions = {};
 
 const mutations = {
   INCREASE_MONEY: (state, payload) => (state.money += payload),
-  DECREASE_MONEY: (state, payload) => (state.money -= payload),
+  DECREASE_MONEY: (state, payload) =>
+    payload > state.money ? state.money : (state.money -= payload),
 };
 
 export default {

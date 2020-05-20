@@ -9,12 +9,16 @@
     <b-input-group class="input" size="md">
       <b-form-input
         @input="inputChange({ item, $event })"
-        pattern="\d+"
         type="number"
         :value="lastAmount"
       ></b-form-input>
     </b-input-group>
-    <b-button @click="buyItem(item)" class="btn-buy">Buy</b-button>
+    <b-button
+      @click="buyItem(item)"
+      :class="checkItemLimit(item) ? 'disabled' : 'btn-buy'"
+      :disabled="checkItemLimit(item)"
+      >Buy</b-button
+    >
   </div>
 </template>
 
@@ -29,7 +33,6 @@ export default {
   },
   data() {
     return {
-      value: 0,
       lastAmount: 0,
     };
   },
@@ -39,7 +42,10 @@ export default {
       let tempAmount = parseInt(data.$event);
       let cost = data.item.Cost;
 
-      if (isNaN(tempAmount)) tempAmount = 0;
+      if (isNaN(tempAmount) || tempAmount > data.item.Limit) {
+        tempAmount = 0;
+        return;
+      }
 
       if (tempAmount > this.lastAmount) {
         this.$store.commit(
@@ -62,6 +68,10 @@ export default {
     sellItem(data) {
       this.lastAmount--;
       this.$store.commit("INCREASE_MONEY", data.Cost);
+    },
+    checkItemLimit(item) {
+      if (item.Cost > this.getMoney || this.lastAmount >= item.Limit)
+        return true;
     },
   },
 };
@@ -98,6 +108,13 @@ export default {
   .disabled {
     background-color: $grey;
     color: $pure-black;
+  }
+
+  // Remove spinner/arrows from number inputs
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
 </style>

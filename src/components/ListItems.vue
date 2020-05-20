@@ -1,7 +1,7 @@
 <template>
   <div class="item-container">
-    <div class="item" v-for="item in getItems" :key="item.name">
-      <img src="https://picsum.photos/125" alt="" />
+    <div class="item" v-for="item in getItems" :key="item.Name">
+      <img class="item-image" :src="getImageUrl(item.Name)" :alt="item.Name" />
 
       <div class="item-name">{{ item.Name }}</div>
 
@@ -35,6 +35,12 @@ export default {
     numberToText(number) {
       return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+    getImageUrl(name) {
+      let imageUrl = require("@/assets/images/" +
+        name.replace(/ /g, "").toLowerCase() +
+        ".jpg");
+      return imageUrl;
+    },
   },
 };
 </script>
@@ -52,6 +58,11 @@ export default {
     font-size: 20px;
     padding: 20px 0;
 
+    .item-image {
+      max-width: 100%;
+      max-height: 120px;
+    }
+
     *:not(.item-name) {
       padding: 5px;
     }
@@ -68,7 +79,7 @@ export default {
   }
 }
 
-@media (min-width: 601px) and (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 920px) {
   .item-container {
     grid-template-columns: repeat(2, 1fr);
   }
