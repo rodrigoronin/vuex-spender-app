@@ -1,6 +1,6 @@
 <template>
   <div class="item-container">
-    <div class="item" v-for="item in getItems" :key="item.Name">
+    <div class="item" v-for="item in items" :key="item.Name">
       <img class="item-image" :src="getImageUrl(item.Name)" :alt="item.Name" />
 
       <div class="item-name">{{ item.Name }}</div>
@@ -28,8 +28,16 @@ export default {
   data() {
     return {
       currentValue: 0,
+      items: [],
     };
   },
+  mounted() {
+    this.items = [...this.getItems];
+    this.items.sort((a, b) => {
+      return a["Cost"] - b["Cost"];
+    });
+  },
+  beforeUpdate() {},
   computed: mapGetters(["getItems"]),
   methods: {
     numberToText(number) {

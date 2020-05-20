@@ -1,9 +1,9 @@
 const state = {
   storeItems: [
-    { Name: "Big Mac", Cost: 2 },
     { Name: "Cup of Coffee", Cost: 4 },
-    { Name: "Book", Cost: 15 },
+    { Name: "Big Mac", Cost: 2 },
     { Name: "Video Game", Cost: 60 },
+    { Name: "Book", Cost: 15 },
     { Name: "Charity", Cost: 100 },
     { Name: "Headphones", Cost: 200 },
     { Name: "Air Jordans", Cost: 200 },
@@ -52,7 +52,9 @@ const getters = {
   getCartItems: (state) => state.cartItems,
 };
 
-const actions = {};
+const actions = {
+  // IMPLEMENT ACTION TO UPDATE AND DISPLAY PURCHASED ITEMS (SHoppingCart.vue)
+};
 
 const mutations = {
   INCREASE_MONEY: (state, payload) => (state.money += payload),
