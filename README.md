@@ -5,6 +5,10 @@ Have fun and spend Mr. Stark's money =)
 
 ## Available Scripts
 
+First install the project dependencies:
+
+###  `yarn`
+
 In the project directory, you can run:
 
 ### `yarn serve`
